@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random gradient background</title>
+    <style>
+        #mybody{
+            overflow: hidden;
+        }
+      #change-button {
+        width: 140px;
+        height: 70px;
+        background-color: #000;
+        color: #fff;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin: 200px 600px;
+      }
+      h2,.color-gradient-hexcode{
+          text-align: center;
+          font-size:2em;
+      }
+      
+    </style>
+  </head>
+  <body id="mybody">
+    <h2>Background is:</h2>
+    <p class="color-gradient-hexcode">linear-gradient:(to left,<span id="para1"></span>,<span id='para2'></span>)</p></pre>
+    <button id="change-button">Click Me</button>
+  
+  </body>
+  <script>
+    let mybody = document.getElementById("mybody");
+    let myBtn = document.getElementById("change-button");
+    let para1 = document.getElementById('para1');
+    let para2 = document.getElementById('para2');
+
+    function changeGradient() {
+      let colors1 = (Math.random() * 0xfffff * 1000000).toString(16);
+      let colors2 = (Math.random() * 0xfffff * 1000000).toString(16);
+      color1 = `#${colors1.slice(0, 6)}`;
+      color2 = `#${colors2.slice(0, 6)}`;
+      mybody.style.background = `linear-gradient(to left,${color1},${color2}`;
+      para1.textContent = `${color1}`;
+      para2.textContent = `${color2}`;
+
+    }
+
+    myBtn.addEventListener("click", () => {
+      changeGradient();
+    });
+  </script>
+</html>
